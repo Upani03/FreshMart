@@ -1,31 +1,12 @@
--- phpMyAdmin SQL Dump
--- version 5.2.3
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1:3308
--- Generation Time: Mar 22, 2026 at 02:17 PM
--- Server version: 8.4.7
--- PHP Version: 8.3.28
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `freshmart_db2`
---
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `messages`
---
+
 
 DROP TABLE IF EXISTS `messages`;
 CREATE TABLE IF NOT EXISTS `messages` (
@@ -39,18 +20,14 @@ CREATE TABLE IF NOT EXISTS `messages` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
+
 -- Dumping data for table `messages`
---
+
 
 INSERT INTO `messages` (`id`, `name`, `email`, `phone`, `subject`, `message`, `created_at`) VALUES
 (1, 'ggkmjt', 'upanihithmini@gmail.com', '+94763868654', 'bgsjnhymj', 'gtkrsyh', '2026-03-22 18:24:00');
 
--- --------------------------------------------------------
-
---
 -- Table structure for table `orders`
---
 
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE IF NOT EXISTS `orders` (
@@ -76,11 +53,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   KEY `fk_order_user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
-
---
 -- Table structure for table `order_items`
---
 
 DROP TABLE IF EXISTS `order_items`;
 CREATE TABLE IF NOT EXISTS `order_items` (
@@ -94,11 +67,7 @@ CREATE TABLE IF NOT EXISTS `order_items` (
   KEY `fk_item_order` (`order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
---
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
@@ -119,23 +88,14 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`) VALUES
 (1, 'demo_user', 'demo@freshmart.lk', '$2y$12$YkQw3g4R5H1oXvLsNm2V7eQpOuJZ0bK8dA9fCtWgEyMnRlP6siXqC', '2026-03-22 17:53:04'),
 (2, 'Upani', 'upanihithmini@gmail.com', '$2y$10$lRkBMYWF7./UG2CN4PthoeJRbkiPSlDNmyAbhVECgcdZvOaG2S5xu', '2026-03-22 18:16:32');
 
---
--- Constraints for dumped tables
---
 
---
--- Constraints for table `orders`
---
+
 ALTER TABLE `orders`
   ADD CONSTRAINT `fk_order_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
---
--- Constraints for table `order_items`
---
+
 ALTER TABLE `order_items`
   ADD CONSTRAINT `fk_item_order` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
