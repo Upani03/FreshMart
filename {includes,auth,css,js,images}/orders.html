@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="Cache-Control" content="no-store"/>
+  <title>FreshMart - My Orders</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Fresh<span>Mart</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item"><a class="nav-link" data-page="index"      href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" data-page="products"   href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" data-page="categories" href="categories.html">Categories</a></li>
+          <li class="nav-item"><a class="nav-link" data-page="contact"    href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" data-page="orders"     href="orders.html">My Orders</a></li>
+        </ul>
+        <button class="btn-cart-nav" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+          <i class="bi bi-cart3"></i> Cart <span class="cart-pill">0</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="orders-hero">
+    <div class="container">
+      <h1><i class="bi bi-bag-check me-3"></i>My Orders</h1>
+      <p class="opacity-75 mb-0">Track, manage and reorder your past purchases</p>
+    </div>
+  </div>
+
+  <section class="py-5" style="background:var(--body-bg)">
+    <div class="container">
+      <div class="orders-tabs">
+        <button class="orders-tab active" data-filter="all"       onclick="filterOrdersTab('all',this)">All Orders</button>
+        <button class="orders-tab"        data-filter="confirmed" onclick="filterOrdersTab('confirmed',this)">Confirmed</button>
+        <button class="orders-tab"        data-filter="delivered" onclick="filterOrdersTab('delivered',this)">Delivered</button>
+        <button class="orders-tab"        data-filter="cancelled" onclick="filterOrdersTab('cancelled',this)">Cancelled</button>
+      </div>
+      <div id="ordersContainer"></div>
+    </div>
+  </section>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" style="width:380px">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title"><i class="bi bi-cart3 me-2"></i>Your Cart</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column p-0">
+      <div class="flex-grow-1 overflow-auto px-3 py-2" id="cartItems"></div>
+      <div class="cart-summary" id="cartSummary"></div>
+    </div>
+  </div>
+
+  <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x mb-3" style="z-index:9999">
+    <div id="addToast" class="toast align-items-center text-bg-dark border-0 rounded-pill px-2" role="alert">
+      <div class="d-flex"><div class="toast-body" id="toastMsg"></div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pt-5 pb-3">
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <div class="col-12 col-md-6">
+          <div class="footer-logo mb-2">Fresh<span>Mart</span></div>
+          <p style="font-size:.87rem">Your trusted online supermarket.</p>
+        </div>
+        <div class="col-12 col-md-6"><h5>Quick Links</h5><ul class="d-flex gap-3 flex-wrap">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul></div>
+      </div>
+      <hr class="footer-divider"/>
+      <p class="footer-bottom text-center mb-0">2025 FreshMart. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
